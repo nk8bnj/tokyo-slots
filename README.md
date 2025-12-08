@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-[DEMO GAME](https://tokyo-slots-one.vercel.app/) 
+[DEMO GAME](https://tokyo-slots-two.vercel.app/) 
 
 ## Getting Started
 
