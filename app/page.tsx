@@ -1,65 +1,121 @@
-import Image from "next/image";
+import Image from 'next/image';
+import SlotMachine from '@/components/SlotMachine/SlotMachine';
+import { FLOATING_ICON_POSITIONS } from '@/constants/layout';
+import { FLOATING_ICON_BASE_DELAY, FLOATING_ICON_DURATION_BASE, FLOATING_ICON_DURATION_VARIATION } from '@/constants/animations';
+
+// Import floating icons
+import bombIcon from '@/assets/floating/bomb2.svg';
+import boxIcon from '@/assets/floating/box.svg';
+import coinSkullIcon from '@/assets/floating/coin-skull.svg';
+import coinStarIcon from '@/assets/floating/coin-star.svg';
+import coinsIcon from '@/assets/floating/coins.svg';
+import cupIcon from '@/assets/floating/cup.svg';
+import giftIcon from '@/assets/floating/gift.svg';
+import moneyIcon from '@/assets/floating/money2.svg';
+
+// Import background
+import tokyoCity from '@/assets/bg/tokiocity.png';
+import cloud from '@/assets/bg/cloud.png';
+import sky from '@/assets/bg/sky.png';
+
+const floatingIcons = [
+	coinStarIcon,
+	boxIcon,
+	bombIcon,
+	coinSkullIcon,
+	cupIcon,
+	coinsIcon,
+	giftIcon,
+	moneyIcon,
+];
+
+const RAY_COUNT = 12;
+const RAY_ROTATION_INCREMENT = 30;
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+	return (
+		<div className="min-h-screen bg-gradient-to-br from-green-200 via-blue-200 to-purple-200 relative overflow-hidden">
+			{/* Top background */}
+			<div className="absolute top-[-5%] left-0 right-0 pointer-events-none">
+				<Image
+					src={sky}
+					alt="Top background"
+					className="w-full h-auto"
+				/>
+			</div>
+
+			{/* Animated background rays */}
+			<div className="absolute inset-0 opacity-30">
+				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%]">
+					{[...Array(RAY_COUNT)].map((_, i) => (
+						<div
+							key={i}
+							className="absolute top-1/2 left-1/2 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent origin-left"
+							style={{
+								transform: `rotate(${i * RAY_ROTATION_INCREMENT}deg)`,
+							}}
+						/>
+					))}
+				</div>
+			</div>
+
+			{/* Floating icons */}
+			<div className="absolute inset-0 pointer-events-none">
+				{floatingIcons.map((icon, i) => {
+					const config = FLOATING_ICON_POSITIONS[i % FLOATING_ICON_POSITIONS.length];
+
+					return (
+						<div
+							key={i}
+							className="absolute animate-float z-10"
+							style={{
+								top: config.top,
+								left: config.left,
+								animationDelay: `${i * FLOATING_ICON_BASE_DELAY}s`,
+								animationDuration: `${FLOATING_ICON_DURATION_BASE + (i % FLOATING_ICON_DURATION_VARIATION)}s`,
+							}}
+						>
+							<Image
+								src={icon}
+								alt="floating icon"
+								width={config.size}
+								height={config.size}
+								style={{
+									width: `${config.size}px`,
+									height: `${config.size}px`,
+								}}
+							/>
+						</div>
+					);
+				})}
+			</div>
+
+			{/* Tokyo skyline silhouette */}
+			<div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-800/30 to-transparent"/>
+
+			{/* Tokyo city background */}
+			<div className="absolute bottom-[15%] left-0 right-0 z-0">
+				<Image
+					src={tokyoCity}
+					alt="Tokyo city"
+					className="w-full h-auto object-cover"
+				/>
+			</div>
+
+			{/* Cloud foreground */}
+			<div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
+				<Image
+					src={cloud}
+					alt="Cloud"
+					className="w-full h-auto object-cover"
+				/>
+			</div>
+
+			{/* Main game */}
+			<div className="relative z-10">
+				<SlotMachine />
+			</div>
+		</div>
+	);
 }
+
