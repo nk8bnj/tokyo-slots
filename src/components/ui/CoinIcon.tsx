@@ -1,4 +1,5 @@
-import { coinIconStyle } from '@/styles/components';
+import Image from 'next/image';
+import coinImg from '@/assets/bg/coin.png';
 
 interface CoinIconProps {
   size?: 'sm' | 'md' | 'lg';
@@ -12,12 +13,17 @@ const SIZE_MAP = {
   lg: 'w-10 h-10 text-xl',
 } as const;
 
-export default function CoinIcon({ size = 'md', children = '💰', className = '' }: CoinIconProps) {
+export default function CoinIcon({ size = 'lg', children, className = '' }: CoinIconProps) {
   return (
     <div
-      className={`${SIZE_MAP[size]} rounded-full flex items-center justify-center shrink-0 ${className}`}
-      style={coinIconStyle}
+      className={`${SIZE_MAP[size]} rounded-full flex items-center justify-center shrink-0 relative ${className}`}
     >
+      <Image
+        src={coinImg}
+        alt="Coin"
+        fill
+        className="object-contain"
+      />
       {children}
     </div>
   );

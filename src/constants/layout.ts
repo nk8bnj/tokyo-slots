@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 
 // Floating icons layout configuration
 export const FLOATING_ICON_POSITIONS = [
-  { top: '15%', left: '15%', size: 108 },
+  { top: '15%', left: '8%', size: 108 },
   { top: '30%', left: '85%', size: 76 },
   { top: '45%', left: '25%', size: 96 },
   { top: '60%', left: '70%', size: 96 },

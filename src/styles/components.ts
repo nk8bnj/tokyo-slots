@@ -4,22 +4,16 @@ import { COLORS, SHADOWS, GRADIENTS } from './theme';
  * Reusable style objects for common components
  */
 
-export const coinIconStyle = {
-  background: GRADIENTS.coin,
-  border: `2px solid ${COLORS.coinBorder}`,
-  boxShadow: SHADOWS.coin,
-} as const;
-
 export const buttonBaseStyle = {
   background: GRADIENTS.button,
-  borderRadius: '15px',
+  borderRadius: '10px',
   border: `3px solid ${COLORS.buttonBorder}`,
   boxShadow: SHADOWS.button,
 } as const;
 
 export const betDisplayStyle = {
   background: GRADIENTS.betDisplay,
-  borderRadius: '40px',
+  borderRadius: '10px',
   border: `3px solid ${COLORS.buttonBorder}`,
   boxShadow: SHADOWS.betDisplay,
 } as const;

@@ -9,9 +9,9 @@ export default function BetControls() {
   const { currentBet, incrementBet, decrementBet, isSpinning } = useSlotStore();
 
   return (
-    <div className="w-full max-w-[450px] mb-16">
+    <div className="w-full max-w-[371px] mb-14">
       <h2 
-        className="text-lg md:text-xl font-black text-center mb-3 tracking-wider"
+        className="text-lg md:text-xl font-black text-center mb-2.5 tracking-wider"
         style={{
           color: '#5C7FFF',
           fontFamily: 'system-ui, -apple-system, sans-serif',
@@ -20,12 +20,12 @@ export default function BetControls() {
         PLACE A BET
       </h2>
 
-      <div className='flex items-center justify-center gap-3 md:gap-4'>
+      <div className='flex items-center justify-center gap-2.5 md:gap-3.5'>
         {/* Minus Button */}
         <button
           onClick={decrementBet}
           disabled={isSpinning || currentBet <= MIN_BET}
-          className="group relative w-12 h-12 md:w-14 md:h-14 disabled:opacity-40 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
+          className="group relative w-10 h-[40px] md:w-11 md:h-[44px] disabled:opacity-40 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
           style={buttonBaseStyle}
         >
           <span 
@@ -38,13 +38,13 @@ export default function BetControls() {
 
         {/* Bet Display */}
         <div 
-          className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 flex-1 max-w-[240px]"
+          className="relative flex items-center justify-center px-5 md:px-7 h-[40px] md:h-[44px] flex-1 max-w-[198px]"
           style={betDisplayStyle}
         >
           <div className="flex items-center gap-2">
-            <CoinIcon />
+            <CoinIcon className="w-4 h-4 md:w-7 md:h-7 mt-1" />
             <span 
-              className="text-2xl md:text-3xl font-black tracking-tight"
+              className="text-xl md:text-xl font-black tracking-tight"
               style={textStyleWhite}
             >
               {currentBet.toLocaleString()}.99
@@ -56,7 +56,7 @@ export default function BetControls() {
         <button
           onClick={incrementBet}
           disabled={isSpinning || currentBet >= MAX_BET}
-          className="group relative w-12 h-12 md:w-14 md:h-14 disabled:opacity-40 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
+          className="group relative w-10 h-[40px] md:w-11 md:h-[44px] disabled:opacity-40 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
           style={buttonBaseStyle}
         >
           <span 

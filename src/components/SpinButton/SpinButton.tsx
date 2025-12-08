@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useSlotStore } from '@/store/useSlotStore';
-import spinButtonImg from '@/assets/bg/spin button pressed.png';
+import spinButtonImg from '@/assets/bg/spin-button.png';
 
 // Animation constants
 const SPIN_BUTTON_PULSE_DURATION = 1.5; // seconds

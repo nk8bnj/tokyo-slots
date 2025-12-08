@@ -29,7 +29,7 @@ export default function SlotMachine() {
       </div>
       
       {/* Slot Machine Container */}
-      <div className="relative w-full max-w-[600px] aspect-6/5">
+      <div className="relative w-full max-w-[28.125rem] aspect-6/5">
         {/* Slot Machine Base Image */}
         <Image 
           src={slotImg}
@@ -42,7 +42,7 @@ export default function SlotMachine() {
         {/* Reels positioned on top of the slot machine */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div 
-            className="flex gap-1.5 md:gap-6"
+            className="flex gap-1.5 md:gap-4"
             style={REEL_CONTAINER_STYLE}
           >
             {reels.map((symbol, index) => (
