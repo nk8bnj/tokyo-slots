@@ -40,7 +40,7 @@ export default function Balance() {
               className="text-2xl md:text-3xl font-black tracking-tight"
               style={textStyleWhite}
             >
-              {balance.toLocaleString()}.99
+              {balance.toLocaleString()}
             </span>
           </div>
         </div>

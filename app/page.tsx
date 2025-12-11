@@ -35,14 +35,14 @@ const RAY_ROTATION_INCREMENT = 30;
 export default function Home() {
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-green-200 via-blue-200 to-purple-200 relative overflow-hidden">
-			{/* Top background */}
-			<div className="absolute top-[-5%] left-0 right-0 pointer-events-none">
-				<Image
-					src={sky}
-					alt="Top background"
-					className="w-full h-auto"
-				/>
-			</div>
+		{/* Top background */}
+		<div 
+			className="absolute top-[-14%] left-0 right-0 pointer-events-none bg-cover bg-center bg-no-repeat"
+			style={{
+				backgroundImage: `url(${sky.src})`,
+				minHeight: '20vh',
+			}}
+		/>
 
 			{/* Animated background rays */}
 			<div className="absolute inset-0 opacity-30">
@@ -93,23 +93,23 @@ export default function Home() {
 			{/* Tokyo skyline silhouette */}
 			<div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-800/30 to-transparent"/>
 
-			{/* Tokyo city background */}
-			<div className="absolute bottom-[15%] left-0 right-0 z-0">
-				<Image
-					src={tokyoCity}
-					alt="Tokyo city"
-					className="w-full h-auto object-cover"
-				/>
-			</div>
+		{/* Tokyo city background */}
+		<div 
+			className="absolute bottom-[12%] left-0 right-0 z-0 bg-cover bg-center bg-no-repeat"
+			style={{
+				backgroundImage: `url(${tokyoCity.src})`,
+				minHeight: '20vh',
+			}}
+		/>
 
-			{/* Cloud foreground */}
-			<div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
-				<Image
-					src={cloud}
-					alt="Cloud"
-					className="w-full h-auto object-cover"
-				/>
-			</div>
+		{/* Cloud foreground */}
+		<div 
+			className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none bg-cover bg-center bg-no-repeat"
+			style={{
+				backgroundImage: `url(${cloud.src})`,
+				minHeight: '20vh',
+			}}
+		/>
 
 			{/* Main game */}
 			<div className="relative z-10">

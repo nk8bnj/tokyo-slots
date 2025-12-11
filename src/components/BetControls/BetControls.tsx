@@ -47,7 +47,7 @@ export default function BetControls() {
               className="text-xl md:text-xl font-black tracking-tight"
               style={textStyleWhite}
             >
-              {currentBet.toLocaleString()}.99
+              {currentBet.toLocaleString()}
             </span>
           </div>
         </div>
